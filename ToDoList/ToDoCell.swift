@@ -7,9 +7,15 @@
 //
 
 import UIKit
-
+@objc protocol ToDoCellDelegate: class{
+    func checkmarkTapped(sender: ToDoCell)
+}
 class ToDoCell: UITableViewCell {
-    
+    var delegate: ToDoCellDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isCompleteButton: UIButton!
+
+    @IBAction func completeButtonTapped(_ sender: Any) {
+        delegate?.checkmarkTapped(sender: self)
+    }
 }
