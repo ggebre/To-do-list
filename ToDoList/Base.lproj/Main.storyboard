@@ -18,14 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="NAx-UK-dbG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="NAx-UK-dbG" customClass="ToDoCell" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NAx-UK-dbG" id="ry2-Vg-Rgr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dki-i8-omh">
+                                            <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="F7g-62-VZw"/>
+                                                <constraint firstAttribute="height" constant="36" id="vpX-jt-zzl"/>
+                                            </constraints>
+                                            <state key="normal" image="Unchecked"/>
+                                            <state key="selected" image="Checked"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-Ci-6q1">
+                                            <rect key="frame" x="52" y="11.5" width="299" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Qpp-Ci-6q1" firstAttribute="centerY" secondItem="ry2-Vg-Rgr" secondAttribute="centerY" id="7a7-BW-xPw"/>
+                                        <constraint firstItem="dki-i8-omh" firstAttribute="leading" secondItem="ry2-Vg-Rgr" secondAttribute="leading" constant="8" id="8wQ-Bd-zY4"/>
+                                        <constraint firstItem="Qpp-Ci-6q1" firstAttribute="leading" secondItem="dki-i8-omh" secondAttribute="trailing" constant="8" id="IkT-04-qku"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Qpp-Ci-6q1" secondAttribute="trailing" constant="8" id="V7P-gB-Gcp"/>
+                                        <constraint firstItem="dki-i8-omh" firstAttribute="centerY" secondItem="ry2-Vg-Rgr" secondAttribute="centerY" id="o3Q-D5-hZz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="isCompleteButton" destination="dki-i8-omh" id="Lvj-pq-vYD"/>
+                                    <outlet property="titleLabel" destination="Qpp-Ci-6q1" id="7f1-B9-ro3"/>
                                     <segue destination="tjs-W2-3S2" kind="show" identifier="showDetails" id="7DU-lw-rkW"/>
                                 </connections>
                             </tableViewCell>
@@ -45,7 +71,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frW-d6-GNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="137"/>
+            <point key="canvasLocation" x="143" y="137"/>
         </scene>
         <!--New ToDo-->
         <scene sceneID="W16-VF-cOG">
@@ -218,7 +244,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alb-JL-zff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="136"/>
+            <point key="canvasLocation" x="868" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rg9-ff-wBW">

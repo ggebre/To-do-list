@@ -14,6 +14,7 @@
 		64FAF1A1224B17F90005F01F /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAF1A0224B17F90005F01F /* ToDo.swift */; };
 		64FAF1A3224B18B50005F01F /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAF1A2224B18B50005F01F /* ToDoTableViewController.swift */; };
 		64FAF1A5224B33AC0005F01F /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAF1A4224B33AC0005F01F /* ToDoViewController.swift */; };
+		64FAF1A7224BCAA20005F01F /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FAF1A6224BCAA20005F01F /* ToDoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		64FAF1A0224B17F90005F01F /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		64FAF1A2224B18B50005F01F /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		64FAF1A4224B33AC0005F01F /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		64FAF1A6224BCAA20005F01F /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				64FAF1A4224B33AC0005F01F /* ToDoViewController.swift */,
 				64FAF1A0224B17F90005F01F /* ToDo.swift */,
 				64FAF1A2224B18B50005F01F /* ToDoTableViewController.swift */,
+				64FAF1A6224BCAA20005F01F /* ToDoCell.swift */,
 				64FAF195224B17140005F01F /* Assets.xcassets */,
 				64FAF197224B17140005F01F /* LaunchScreen.storyboard */,
 				64FAF19A224B17150005F01F /* Info.plist */,
@@ -145,6 +148,7 @@
 				64FAF18F224B17130005F01F /* AppDelegate.swift in Sources */,
 				64FAF1A3224B18B50005F01F /* ToDoTableViewController.swift in Sources */,
 				64FAF1A1224B17F90005F01F /* ToDo.swift in Sources */,
+				64FAF1A7224BCAA20005F01F /* ToDoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
