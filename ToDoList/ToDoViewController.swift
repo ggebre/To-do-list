@@ -8,7 +8,7 @@
 
 import UIKit
 class ToDoViewController: UITableViewController {
-    
+    var todo : ToDo?
     var isPickerHidden = true
     @IBOutlet weak var isCompleteButton: UIButton!
     
@@ -45,16 +45,16 @@ class ToDoViewController: UITableViewController {
         let normalCellHeight = CGFloat(44)
         let largeCellHeight = CGFloat(200)
         switch indexPath{
-        case [0,1]:
-            return isPickerHidden ? normalCellHeight : largeCellHeight
         case [1,0]:
+            return isPickerHidden ? normalCellHeight : largeCellHeight
+        case [2,0]:
             return largeCellHeight
         default: return normalCellHeight
         }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
-        case [0,1]:
+        case [1,0]:
             isPickerHidden = !isPickerHidden
             
             dueDateLabel.textColor = isPickerHidden ? .black : tableView.tintColor
@@ -62,6 +62,16 @@ class ToDoViewController: UITableViewController {
             tableView.endUpdates()
         default:break
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "saveUnwind" else {return}
+        let title = titleTextField.text!
+        let isComplete = isCompleteButton.isSelected
+        let dueDate = dueDatePickerView.date
+        let notes = notesTextView.text
+        
+        todo = ToDo(title: title, isComplete: isComplete, dueDate: dueDate, notes: notes)
     }
     func updateSaveButtonState(){
         let text = titleTextField.text ?? ""
