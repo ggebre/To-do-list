@@ -8,8 +8,12 @@
 
 import UIKit
 class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     var todos = [ToDo]()
     
+    var filteredTodos = [ToDo]()
+    var searching = false
     
     func checkmarkTapped(sender: ToDoCell) {
         if let indexPath = tableView.indexPath(for: sender){
@@ -31,18 +35,32 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
             todos = ToDo.loadSampleToDos()
         }
         navigationItem.leftBarButtonItem = editButtonItem
+        
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count 
+        if searching {
+            return filteredTodos.count
+        } else {
+            return todos.count
+        }
+        
     }
     override func tableView(_ tableView: UITableView,  cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier")as? ToDoCell else {
             fatalError("Could not dequeue a cell")
         }
-        let todo = todos[indexPath.row]
-        cell.titleLabel?.text = todo.title
-        cell.isCompleteButton.isSelected = todo.isComplete
-        cell.delegate = self
+        if searching{
+            let ftodo = filteredTodos[indexPath.row]
+            cell.titleLabel?.text = ftodo.title
+            cell.isCompleteButton.isSelected = ftodo.isComplete
+            cell.delegate = self
+        } else {
+            let todo = todos[indexPath.row]
+            cell.titleLabel?.text = todo.title
+            cell.isCompleteButton.isSelected = todo.isComplete
+            cell.delegate = self
+        }
+        
         return cell
     }
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -82,4 +100,18 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
     }
     
     
+}
+
+extension ToDoTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredTodos = todos.filter{$0.title.lowercased().hasPrefix(searchText.lowercased())}
+        searching = true
+        tableView.reloadData()
+        
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        tableView.reloadData()
+    }
 }
