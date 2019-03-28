@@ -224,11 +224,18 @@
                                 <segue destination="m7m-ST-x3l" kind="unwind" identifier="CancelUnwind" unwindAction="unwindToToDoListWithSegue:" id="Gap-o6-Xuh"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="B8A-M6-wyp">
-                            <connections>
-                                <segue destination="m7m-ST-x3l" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="wfA-6v-CmY"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="B8A-M6-wyp">
+                                <connections>
+                                    <segue destination="m7m-ST-x3l" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="wfA-6v-CmY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="compose" id="pRN-I0-E8J">
+                                <connections>
+                                    <action selector="composeEmail:" destination="tjs-W2-3S2" id="amG-TG-SR2"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="dueDateLabel" destination="A0I-DP-Py4" id="FZh-2q-d61"/>
@@ -242,7 +249,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmu-xv-2wf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="m7m-ST-x3l" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1487" y="135"/>
+            <point key="canvasLocation" x="1542" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Wg-ug-bfY">

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 class ToDoViewController: UITableViewController {
     var todo : ToDo?
     var isPickerHidden = true
@@ -86,7 +87,32 @@ class ToDoViewController: UITableViewController {
         let text = titleTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
     func updateDueDateLabel(date: Date){
         dueDateLabel.text = ToDo.dueDateFormatter.string(from: date)
     }
+    
+    @IBAction func composeEmail(_ sender: UIBarButtonItem) {
+        mailCompose()
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            dismiss(animated: true, completion: nil)
+        }
+        
+    }
+}
+
+extension ToDoViewController: MFMailComposeViewControllerDelegate {
+    func mailCompose(){
+        guard MFMailComposeViewController.canSendMail() else {return}
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        mailComposer.setCcRecipients(["getu.gebre.gg@gmail.com"])
+        mailComposer.setSubject("Home work")
+        if let dueDate = todo?.dueDate {
+            mailComposer.setMessageBody("Hello, you have a homework due \(dueDate)", isHTML: false)
+        }
+        
+        present(mailComposer, animated: true, completion: nil)
+    }
+    
 }
