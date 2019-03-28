@@ -18,4 +18,12 @@ class ToDoCell: UITableViewCell {
     @IBAction func completeButtonTapped(_ sender: Any) {
         delegate?.checkmarkTapped(sender: self)
     }
+//    func completeButtonTapped(sender: ToDoCell){
+//        if let indexPath = tableView.indexPath(for: sender){
+//            let todo = todos[indexPath.row]
+//            todo.isComplete = !todo.isComplete
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            ToDo.saveToDos(todos)
+//        }
+//    }
 }
