@@ -38,6 +38,7 @@ class ToDoViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        dueDatePickerView.minimumDate = Date()
         if let todo = todo{
             navigationItem.title = "To-Do"
             titleTextField.text = todo.title
@@ -95,7 +96,7 @@ class ToDoViewController: UITableViewController {
     @IBAction func composeEmail(_ sender: UIBarButtonItem) {
         mailCompose()
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-            dismiss(animated: true, completion: nil)
+            controller.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -107,12 +108,13 @@ extension ToDoViewController: MFMailComposeViewControllerDelegate {
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
         mailComposer.setCcRecipients(["getu.gebre.gg@gmail.com"])
-        mailComposer.setSubject("Home work")
+        mailComposer.setSubject(titleTextField.text!)
         if let dueDate = todo?.dueDate {
             mailComposer.setMessageBody("Hello, you have a homework due \(dueDate)", isHTML: false)
         }
         
         present(mailComposer, animated: true, completion: nil)
     }
+   
     
 }
