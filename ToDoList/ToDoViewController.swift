@@ -107,7 +107,7 @@ extension ToDoViewController: MFMailComposeViewControllerDelegate {
         guard MFMailComposeViewController.canSendMail() else {return}
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
-        mailComposer.setCcRecipients(["getu.gebre.gg@gmail.com"])
+        mailComposer.setToRecipients(["getu.gebre.gg@gmail.com"])
         mailComposer.setSubject(titleTextField.text!)
         if let dueDate = todo?.dueDate {
             mailComposer.setMessageBody("Hello, you have a homework due \(dueDate)", isHTML: false)
