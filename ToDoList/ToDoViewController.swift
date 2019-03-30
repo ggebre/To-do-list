@@ -95,16 +95,16 @@ class ToDoViewController: UITableViewController {
     
     @IBAction func composeEmail(_ sender: UIBarButtonItem) {
         mailCompose()
-        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-            controller.dismiss(animated: true, completion: nil)
-        }
+//        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//            controller.dismiss(animated: true, completion: nil)
+//        }
         
     }
 }
 
 extension ToDoViewController: MFMailComposeViewControllerDelegate {
     func mailCompose(){
-        guard MFMailComposeViewController.canSendMail() else {return}
+        guard MFMailComposeViewController.canSendMail() else { return }
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
         mailComposer.setToRecipients(["getu.gebre.gg@gmail.com"])
@@ -115,6 +115,8 @@ extension ToDoViewController: MFMailComposeViewControllerDelegate {
         
         present(mailComposer, animated: true, completion: nil)
     }
-   
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
 }

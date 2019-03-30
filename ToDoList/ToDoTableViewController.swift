@@ -104,7 +104,7 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
 
 extension ToDoTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTodos = todos.filter{$0.title.lowercased().hasPrefix(searchText.lowercased())}
+        filteredTodos = todos.filter{$0.title.lowercased().contains(searchText.lowercased())}
         searching = true
         tableView.reloadData()
         
